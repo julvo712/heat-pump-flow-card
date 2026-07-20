@@ -281,7 +281,9 @@ export const cardStyles = css`
   :host([hide-dhw]) svg [id*="g2-to-dhw"],
   :host([hide-dhw]) svg [id*="dhw-to-hp"],
   :host([hide-dhw]) svg [id*="dhw-coil"],
-  :host([hide-dhw]) svg [id*="dhw-tank"] {
+  :host([hide-dhw]) svg [id*="dhw-tank"],
+  :host([hide-dhw]) svg [id*="dhw-inlet-icon"],
+  :host([hide-dhw]) svg [id*="dhw-outlet-icon"] {
     display: none !important;
   }
 `;

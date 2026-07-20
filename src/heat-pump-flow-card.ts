@@ -789,13 +789,13 @@ export class HeatPumpFlowCard extends LitElement {
    * Renders an icon that supports both URLs and MDI icons (mdi:icon-name format)
    * Uses foreignObject to embed ha-icon for MDI icons, or image tag for URLs
    */
-  private renderIcon(iconOrUrl: string, x: number, y: number, width: number, height: number, opacity: number = 0.8, color?: string) {
+  private renderIcon(iconOrUrl: string, x: number, y: number, width: number, height: number, opacity: number = 0.8, color?: string, id?: string) {
     if (iconOrUrl.startsWith('mdi:')) {
       // Render MDI icon using Home Assistant's ha-icon component
       // Add padding to foreignObject to prevent clipping
       const padding = 5;
       return svg`
-        <foreignObject x="${x - padding}" y="${y - padding}" width="${width + padding * 2}" height="${height + padding * 2}">
+        <foreignObject x="${x - padding}" y="${y - padding}" width="${width + padding * 2}" height="${height + padding * 2}"${id ? ` id="${id}"` : ''}>
           <ha-icon
             icon="${iconOrUrl}"
             style="
@@ -819,7 +819,7 @@ export class HeatPumpFlowCard extends LitElement {
           width="${width}"
           height="${height}"
           href="${iconOrUrl}"
-          opacity="${opacity}"
+          opacity="${opacity}"${id ? ` id="${id}"` : ''}
         />
       `;
     }
@@ -1126,7 +1126,7 @@ export class HeatPumpFlowCard extends LitElement {
             <!-- Water source icon (e.g., water tower) at inlet start - rendered after pipe for z-order -->
             ${this.renderIcon(
               this.config.dhw_tank?.tank_inlet_icon_url || 'mdi:water-pump',
-              245, 390, 60, 60, 0.9, this.config.dhw_tank?.tank_inlet_icon_color
+              245, 390, 60, 60, 0.9, this.config.dhw_tank?.tank_inlet_icon_color, 'dhw-inlet-icon'
             )}
 
             <!-- Pipe: DHW tank outlet (hot water) -->
@@ -1160,13 +1160,13 @@ export class HeatPumpFlowCard extends LitElement {
               <!-- Faucet icon at final outlet -->
               ${this.renderIcon(
                 this.config.dhw_tank_2?.tank_outlet_icon_url || 'mdi:faucet-variant',
-                705, 350, 60, 60, 0.9, this.config.dhw_tank_2?.tank_outlet_icon_color
+                705, 350, 60, 60, 0.9, this.config.dhw_tank_2?.tank_outlet_icon_color, 'dhw-outlet-icon'
               )}
             ` : svg`
               <!-- Faucet icon at DHW tank 1 outlet (when tank 2 is disabled) -->
               ${this.renderIcon(
                 this.config.dhw_tank?.tank_outlet_icon_url || 'mdi:faucet-variant',
-                545, 350, 60, 60, 0.9, this.config.dhw_tank?.tank_outlet_icon_color
+                545, 350, 60, 60, 0.9, this.config.dhw_tank?.tank_outlet_icon_color, 'dhw-outlet-icon'
               )}
             `}
 
