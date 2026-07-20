@@ -723,12 +723,13 @@ export class HeatPumpFlowCard extends LitElement {
     }
 
     // Determine color based on mode (use modeDisplay as fallback if mode not configured)
+    // Supports English (heating/cooling/dhw/hot water) and German (heizbetrieb/kühlung/warmwasser) ebusd strings
     const mode = (state.mode || state.modeDisplay)?.toLowerCase();
-    if (mode?.includes('heat')) {
+    if (mode?.includes('heat') || mode?.includes('heizbetrieb') || mode?.includes('hz-nachlauf')) {
       return cfg.heating_color!;
-    } else if (mode?.includes('cool')) {
+    } else if (mode?.includes('cool') || mode?.includes('kühl')) {
       return cfg.cooling_color!;
-    } else if (mode?.includes('dhw') || mode?.includes('hot water')) {
+    } else if (mode?.includes('dhw') || mode?.includes('hot water') || mode?.includes('warmwasser') || mode?.includes('ww-nachlauf')) {
       return cfg.dhw_color!;
     }
 
