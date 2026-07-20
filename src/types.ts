@@ -7,6 +7,7 @@ export interface HeatPumpFlowCardConfig extends LovelaceCardConfig {
   logo_path?: string;           // Path to logo image (default: '/local/heat-pump-flow.png')
   logo_url?: string;            // URL to open when clicking logo (default: GitHub README)
   logo_size?: number;           // Logo size in pixels (default: 40)
+  hide_dhw_tank?: boolean;      // Hide DHW tank and all associated pipes/icons (for combination buffer systems without separate DHW tank)
 
   // Heat Pump Configuration
   heat_pump?: {

@@ -41,6 +41,13 @@ export class HeatPumpFlowCard extends LitElement {
       throw new Error('Invalid configuration');
     }
 
+    // Set hide-dhw attribute on host element if hide_dhw_tank is configured
+    if (config.hide_dhw_tank) {
+      this.setAttribute('hide-dhw', '');
+    } else {
+      this.removeAttribute('hide-dhw');
+    }
+
     // Merge config with defaults, preserving nested object defaults
     const { animation, temperature, display, heat_pump_visual, labels, temperature_status, ...restConfig } = config;
 

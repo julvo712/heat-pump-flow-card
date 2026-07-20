@@ -275,4 +275,13 @@ export const cardStyles = css`
       animation: none !important;
     }
   }
+
+  /* Hide DHW tank and all associated elements when hide_dhw_tank is set */
+  :host([hide-dhw]) svg [id*="dhw"],
+  :host([hide-dhw]) svg [id*="g2-to-dhw"],
+  :host([hide-dhw]) svg [id*="dhw-to-hp"],
+  :host([hide-dhw]) svg [id*="dhw-coil"],
+  :host([hide-dhw]) svg [id*="dhw-tank"] {
+    display: none !important;
+  }
 `;
