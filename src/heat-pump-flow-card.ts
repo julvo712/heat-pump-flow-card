@@ -2172,8 +2172,8 @@ export class HeatPumpFlowCard extends LitElement {
                   preserveAspectRatio="xMidYMid meet" />
               ` : ''}
 
-              <!-- Fill percentage display (always shown) -->
-              ${bufferState.energyReserve !== undefined ? svg`
+              <!-- Fill percentage display (shown unless show_fill_percentage is false) -->
+              ${this.config.buffer_tank?.show_fill_percentage !== false ? (bufferState.energyReserve !== undefined ? svg`
                 <!-- Percentage on left, energy reserve on right -->
                 <text x="15" y="169" text-anchor="start" fill="${bufferIsHeating ? '#e74c3c' : '#3498db'}" font-size="8" font-weight="bold">
                   ${bufferFillPercentage}%
@@ -2187,7 +2187,7 @@ export class HeatPumpFlowCard extends LitElement {
                 <text x="45" y="173" text-anchor="middle" fill="${bufferIsHeating ? '#e74c3c' : '#3498db'}" font-size="11" font-weight="bold">
                   ${bufferFillPercentage}%
                 </text>
-              `}
+              `) : ''}
 
               <!-- Tank temperature indicator (optional, centered in tank) -->
               ${this.renderTankTempIndicator(

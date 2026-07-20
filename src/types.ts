@@ -98,6 +98,7 @@ export interface HeatPumpFlowCardConfig extends LovelaceCardConfig {
     label_font_size?: number;      // Label font size in pixels (default: 12)
     show_temp_indicator?: boolean; // Show temperature indicator circle in center (default: false)
     temp_indicator_radius?: number; // Temperature indicator circle radius in pixels (default: 15)
+    show_fill_percentage?: boolean; // Show fill percentage text below tank (default: true)
     gradient?: {
       enabled?: boolean;            // Enable gradient visualization (default: true)
       levels?: number;              // Number of gradient steps (default: 10)

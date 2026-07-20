@@ -1500,8 +1500,8 @@ var HeatPumpFlowCard=function(t){"use strict";function e(t,e,i,o){var a,n=argume
                   preserveAspectRatio="xMidYMid meet" />
               `:""}
 
-              <!-- Fill percentage display (always shown) -->
-              ${void 0!==e.energyReserve?G`
+              <!-- Fill percentage display (shown unless show_fill_percentage is false) -->
+              ${!1!==this.config.buffer_tank?.show_fill_percentage?void 0!==e.energyReserve?G`
                 <!-- Percentage on left, energy reserve on right -->
                 <text x="15" y="169" text-anchor="start" fill="${x?"#e74c3c":"#3498db"}" font-size="8" font-weight="bold">
                   ${S}%
@@ -1515,7 +1515,7 @@ var HeatPumpFlowCard=function(t){"use strict";function e(t,e,i,o){var a,n=argume
                 <text x="45" y="173" text-anchor="middle" fill="${x?"#e74c3c":"#3498db"}" font-size="11" font-weight="bold">
                   ${S}%
                 </text>
-              `}
+              `:""}
 
               <!-- Tank temperature indicator (optional, centered in tank) -->
               ${this.renderTankTempIndicator(45,90,e.tankTemp,this.config.buffer_tank?.tank_temp_entity,this.config.buffer_tank?.show_temp_indicator,this.config.buffer_tank?.temp_indicator_radius,x?"#e74c3c":"#3498db")}
