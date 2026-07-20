@@ -358,8 +358,9 @@ export class HeatPumpFlowCard extends LitElement {
   private getG2ValveState(): G2ValveState {
     const cfg = this.config.g2_valve || {};
     const stateString = this.getStateString(cfg.state_entity);
-    // Consider 'on', 'true', '1' as active (DHW mode)
-    const isActive = stateString === 'on' || stateString === 'true' || stateString === '1';
+    // Consider 'on', 'true', '1', 'geöffnet' (German ebusd) as active (DHW mode)
+    const isActive = stateString === 'on' || stateString === 'true' || stateString === '1'
+      || (stateString !== undefined && stateString.toLowerCase() === 'geöffnet');
     return {
       isActive,
     };
