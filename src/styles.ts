@@ -44,12 +44,14 @@ export const cardStyles = css`
 
   .card-content {
     width: 100%;
+    overflow: hidden;
   }
 
   svg {
     width: 100%;
     height: auto;
     display: block;
+    overflow: hidden;
   }
 
   text {

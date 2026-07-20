@@ -42,12 +42,14 @@ var HeatPumpFlowCard=function(t){"use strict";function e(t,e,i,o){var a,n=argume
 
   .card-content {
     width: 100%;
+    overflow: hidden;
   }
 
   svg {
     width: 100%;
     height: auto;
     display: block;
+    overflow: hidden;
   }
 
   text {
